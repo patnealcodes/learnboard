@@ -1,10 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import './Index.scss'
+import './Index.scss';
 
-const App = () => (
-  <div>LearnBoard</div>
-)
+const App = () => <div>LearnBoard</div>;
 
-ReactDOM.render(<App />, document.querySelector('#root'))
+ReactDOM.render(<App />, document.querySelector('#root'));

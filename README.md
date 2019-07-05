@@ -1,4 +1,5 @@
 # LearnBoard
+
 A dashboard to organize videos, links, snippets and articles while you learn
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -30,8 +31,9 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Code Styles
+## VS Code Extensions
 
-* No semicolons :)
-* stylesheets with `.scss`
+For preferred code formatting in VS Code, install the following plugins:
 
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
