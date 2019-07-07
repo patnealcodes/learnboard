@@ -6,6 +6,13 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
 import { openDrawer, closeDrawer } from '../../actions/drawerActions';
+import { AppState } from '../../reducers';
+
+interface AppDrawerProps {
+  drawerOpen: boolean;
+  openDrawer(): void;
+  closeDrawer(): void;
+}
 
 const useStyles = makeStyles({
   list: {
@@ -16,7 +23,7 @@ const useStyles = makeStyles({
   }
 });
 
-const AppDrawer = (props: any) => {
+const AppDrawer = (props: AppDrawerProps) => {
   const classes = useStyles();
 
   const renderMenuItems = () => (
@@ -39,9 +46,9 @@ const AppDrawer = (props: any) => {
   );
 };
 
-const mapState = (state: any) => {
+const mapState = (state: AppState) => {
   return {
-    drawerOpen: state.drawer.drawerOpen
+    drawerOpen: state.drawer.open
   };
 };
 

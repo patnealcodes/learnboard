@@ -7,14 +7,12 @@ export const actionTypes = {
 
 export function openDrawer(): AnyAction {
   return {
-    type: actionTypes.openDrawer,
-    payload: {}
+    type: actionTypes.openDrawer
   };
 }
 
 export function closeDrawer(): AnyAction {
   return {
-    type: actionTypes.closeDrawer,
-    payload: {}
+    type: actionTypes.closeDrawer
   };
 }

@@ -5,6 +5,13 @@ import { AppBar, Toolbar, Typography, Button, IconButton } from '@material-ui/co
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { openDrawer, closeDrawer } from '../../actions/drawerActions';
+import { AppState } from '../../reducers';
+
+interface AppToolbarProps {
+  drawerOpen: boolean;
+  openDrawer(): void;
+  closeDrawer(): void;
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const AppToolbar = (props: any) => {
+const AppToolbar = (props: AppToolbarProps) => {
   const classes = useStyles();
 
   function toggleDrawer() {
@@ -44,8 +51,8 @@ const AppToolbar = (props: any) => {
   );
 };
 
-const mapState = (state: any) => ({
-  drawerOpen: state.drawer.drawerOpen
+const mapState = (state: AppState) => ({
+  drawerOpen: state.drawer.open
 });
 
 const mapDispatch = {

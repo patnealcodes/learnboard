@@ -1,22 +1,22 @@
 import { AnyAction, Reducer } from 'redux';
 
 export interface DrawerState {
-  drawerOpen: boolean;
+  open: boolean;
 }
 
-const InitialDrawerState: DrawerState = { drawerOpen: false };
+const InitialDrawerState: DrawerState = { open: false };
 
 const drawerReducer: Reducer<DrawerState> = (state: DrawerState = InitialDrawerState, action: AnyAction) => {
   switch (action.type) {
     case 'OPEN_DRAWER':
       return {
         ...state,
-        drawerOpen: true
+        open: true
       };
     case 'CLOSE_DRAWER':
       return {
         ...state,
-        drawerOpen: false
+        open: false
       };
     default:
       return state;
