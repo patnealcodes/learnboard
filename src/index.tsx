@@ -1,24 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+import reducers from './reducers';
 
 import './Index.scss';
 
 import AppToolbar from './components/app-toolbar/AppToolbar';
 import AppDrawer from './components/app-drawer/AppDrawer';
 
+const store = createStore(reducers);
+
 const App = () => {
-  const [drawerState, setDrawer] = useState({ open: false });
-  const toggleDrawer = (toggleState?: boolean) => {
-    const open = toggleState !== undefined ? toggleState : !drawerState.open;
-
-    setDrawer({ ...drawerState, open });
-  };
-
   return (
-    <div>
-      <AppToolbar toggleDrawer={toggleDrawer} />
-      <AppDrawer drawerState={drawerState} toggleDrawer={toggleDrawer} />
-    </div>
+    <Provider store={store}>
+      <AppToolbar />
+      <AppDrawer />
+    </Provider>
   );
 };
 
