@@ -37,3 +37,7 @@ For preferred code formatting in VS Code, install the following plugins:
 
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+## Thanks
+
+- Background pattern from [Subtle Patterns](http://www.subtlepatterns.com)

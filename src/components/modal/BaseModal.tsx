@@ -1,6 +1,5 @@
 import React from 'react';
-import { createStyles, withStyles, Theme } from '@material-ui/core/styles';
-import { Modal, WithStyles } from '@material-ui/core';
+import { Modal, WithStyles, createStyles, withStyles, Theme } from '@material-ui/core';
 import { connect } from 'react-redux';
 
 import { AppState } from '../../reducers';
