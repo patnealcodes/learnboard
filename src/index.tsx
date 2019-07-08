@@ -9,6 +9,7 @@ import './Index.scss';
 
 import AppToolbar from './components/app-toolbar/AppToolbar';
 import AppDrawer from './components/app-drawer/AppDrawer';
+import BaseModal from './components/base-modal/BaseModal';
 
 const store = createStore(reducers);
 
@@ -17,6 +18,7 @@ const App = () => {
     <Provider store={store}>
       <AppToolbar />
       <AppDrawer />
+      <BaseModal />
     </Provider>
   );
 };
