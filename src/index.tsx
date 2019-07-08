@@ -12,19 +12,12 @@ import Dashboard from './components/Dashboard';
 import LearningBoard from './components/LearningBoard';
 import BaseModal from './components/modal/BaseModal';
 
+import initializeLocalStorage from './services/initializeLocalStorage';
+
 const store = createStore(reducers);
 
-// // Set initial app load store snapshot
-// let storeSnapshot = store.getState();
-
-// // Subscribe to changes to the store
-// store.subscribe(() => {
-//   const previousState = storeSnapshot;
-//   const currentState = (storeSnapshot = store.getState());
-
-//   console.log('prev:', previousState);
-//   console.log('current:', currentState);
-// });
+// Setup functionality to sync projectList from reduxStore to localStorage
+initializeLocalStorage(store);
 
 const App = () => {
   return (
