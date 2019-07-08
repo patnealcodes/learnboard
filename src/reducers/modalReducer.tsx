@@ -1,28 +1,32 @@
 import { AnyAction, Reducer } from 'redux';
+import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modalActions';
 
 export interface ModalState {
   open: boolean;
-  contentId?: boolean | string;
+  contentId?: string;
 }
 
-const InitialModalState: ModalState = { open: false, contentId: false };
+const initialModalState: ModalState = { open: false };
 
-const modalReducer: Reducer<ModalState> = (state: ModalState = InitialModalState, action: AnyAction) => {
+const modalReducer: Reducer<ModalState, AnyAction> = (state: ModalState = initialModalState, action: AnyAction) => {
   switch (action.type) {
-    case 'OPEN_MODAL':
+    case OPEN_MODAL:
       const contentId = action.payload.contentId;
 
       return {
         ...state,
         open: true,
-        contentId: contentId ? contentId : false
+        contentId
       };
-    case 'CLOSE_MODAL':
-      return {
+    case CLOSE_MODAL:
+      const closeModalState = {
         ...state,
-        open: false,
-        contentId: false
+        open: false
       };
+
+      delete closeModalState.contentId;
+
+      return closeModalState;
     default:
       return state;
   }

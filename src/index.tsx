@@ -9,7 +9,7 @@ import './Index.scss';
 
 import AppToolbar from './components/app-toolbar/AppToolbar';
 import AppDrawer from './components/app-drawer/AppDrawer';
-import BaseModal from './components/base-modal/BaseModal';
+import BaseModal from './components/modal/BaseModal';
 
 const store = createStore(reducers);
 

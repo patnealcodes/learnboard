@@ -1,18 +1,16 @@
 import { AnyAction } from 'redux';
 
-export const actionTypes = {
-  openDrawer: 'OPEN_DRAWER',
-  closeDrawer: 'CLOSE_DRAWER'
-};
+export const OPEN_DRAWER = 'OPEN_DRAWER';
+export const CLOSE_DRAWER = 'CLOSE_DRAWER';
 
 export function openDrawer(): AnyAction {
   return {
-    type: actionTypes.openDrawer
+    type: OPEN_DRAWER
   };
 }
 
 export function closeDrawer(): AnyAction {
   return {
-    type: actionTypes.closeDrawer
+    type: CLOSE_DRAWER
   };
 }

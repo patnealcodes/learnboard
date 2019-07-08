@@ -4,9 +4,9 @@ export interface DrawerState {
   open: boolean;
 }
 
-const InitialDrawerState: DrawerState = { open: false };
+const initialDrawerState: DrawerState = { open: false };
 
-const drawerReducer: Reducer<DrawerState> = (state: DrawerState = InitialDrawerState, action: AnyAction) => {
+const drawerReducer: Reducer<DrawerState, AnyAction> = (state: DrawerState = initialDrawerState, action: AnyAction) => {
   switch (action.type) {
     case 'OPEN_DRAWER':
       return {

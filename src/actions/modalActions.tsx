@@ -1,21 +1,21 @@
 import { AnyAction } from 'redux';
 
-export const actionTypes = {
-  openModal: 'OPEN_MODAL',
-  closeModal: 'CLOSE_MODAL'
-};
+export type ModalType = 'import' | 'export';
 
-export function openModal(contentId?: string): AnyAction {
+export const OPEN_MODAL = 'OPEN_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
+
+export function openModal(contentId: ModalType): AnyAction {
   return {
-    type: actionTypes.openModal,
+    type: OPEN_MODAL,
     payload: {
-      contentId: contentId || false
+      contentId
     }
   };
 }
 
 export function closeModal(): AnyAction {
   return {
-    type: actionTypes.closeModal
+    type: CLOSE_MODAL
   };
 }

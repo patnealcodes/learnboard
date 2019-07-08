@@ -4,12 +4,13 @@ import { Modal, WithStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 
 import { AppState } from '../../reducers';
-import { openModal, closeModal } from '../../actions/modalActions';
+import { openModal, closeModal, ModalType } from '../../actions/modalActions';
 
+// TODO: Implement
 interface BaseModalProps {
   classes: WithStyles;
   modalOpen: boolean;
-  modalContent: string | boolean;
+  modalContent: ModalType;
   openModal?(): void;
   closeModal(): void;
 }
@@ -37,14 +38,12 @@ const BaseModal = withStyles(styles)((props: any) => {
 
   function renderModalContent() {
     switch (props.modalContent) {
-      case '1':
-        return <div>Uno</div>;
-      case '2':
-        return <div>Dos</div>;
-      case '3':
-        return <div>Tres</div>;
+      case 'import':
+        return <div>Import!</div>;
+      case 'export':
+        return <div>Export!</div>;
       default:
-        return <div>Nada</div>;
+        return <div>Unknown Modal Type: {props.modalContent}</div>;
     }
   }
 

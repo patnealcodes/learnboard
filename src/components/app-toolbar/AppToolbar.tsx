@@ -5,14 +5,14 @@ import { AppBar, Toolbar, Typography, Button, IconButton } from '@material-ui/co
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { openDrawer, closeDrawer } from '../../actions/drawerActions';
-import { openModal } from '../../actions/modalActions';
+import { openModal, ModalType } from '../../actions/modalActions';
 import { AppState } from '../../reducers';
 
 interface AppToolbarProps {
   drawerOpen: boolean;
   openDrawer(): void;
   closeDrawer(): void;
-  openModal(arg0: string): void;
+  openModal(arg0: ModalType): void;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -46,7 +46,7 @@ const AppToolbar = (props: AppToolbarProps) => {
           <Typography variant="h6" className={classes.title}>
             LearnBoard
           </Typography>
-          <Button color="inherit" onClick={() => props.openModal('3')}>
+          <Button color="inherit" onClick={() => props.openModal('import')}>
             Import
           </Button>
         </Toolbar>
