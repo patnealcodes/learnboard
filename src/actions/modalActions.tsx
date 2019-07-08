@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
 
-export type ModalType = 'import' | 'export';
+export type ModalType = 'import' | 'export' | '_EMPTY_MODAL';
 
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';

@@ -1,12 +1,12 @@
 import { AnyAction, Reducer } from 'redux';
-import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modalActions';
+import { OPEN_MODAL, CLOSE_MODAL, ModalType } from '../actions/modalActions';
 
 export interface ModalState {
   open: boolean;
-  contentId?: string;
+  contentId: ModalType;
 }
 
-const initialModalState: ModalState = { open: false };
+const initialModalState: ModalState = { open: false, contentId: '_EMPTY_MODAL' };
 
 const modalReducer: Reducer<ModalState, AnyAction> = (state: ModalState = initialModalState, action: AnyAction) => {
   switch (action.type) {
@@ -19,14 +19,10 @@ const modalReducer: Reducer<ModalState, AnyAction> = (state: ModalState = initia
         contentId
       };
     case CLOSE_MODAL:
-      const closeModalState = {
+      return {
         ...state,
-        open: false
+        ...initialModalState
       };
-
-      delete closeModalState.contentId;
-
-      return closeModalState;
     default:
       return state;
   }

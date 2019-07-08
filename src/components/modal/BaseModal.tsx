@@ -4,14 +4,11 @@ import { Modal, WithStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 
 import { AppState } from '../../reducers';
-import { openModal, closeModal, ModalType } from '../../actions/modalActions';
+import { closeModal, ModalType } from '../../actions/modalActions';
 
-// TODO: Implement
-interface BaseModalProps {
-  classes: WithStyles;
+interface BaseModalProps extends WithStyles {
   modalOpen: boolean;
   modalContent: ModalType;
-  openModal?(): void;
   closeModal(): void;
 }
 
@@ -33,7 +30,7 @@ const styles = ({ palette, shadows, spacing }: Theme) =>
     }
   });
 
-const BaseModal = withStyles(styles)((props: any) => {
+const BaseModal = withStyles(styles)((props: BaseModalProps) => {
   const { classes } = props;
 
   function renderModalContent() {
@@ -62,7 +59,6 @@ const mapState = (state: AppState) => ({
 });
 
 const mapDispatch = {
-  openModal,
   closeModal
 };
 
