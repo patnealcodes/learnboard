@@ -16,13 +16,19 @@ interface BaseModalProps {
 
 const styles = ({ palette, shadows, spacing }: Theme) =>
   createStyles({
+    modal: {
+      display: 'flex',
+      justifyContent: 'center'
+    },
     paper: {
-      position: 'absolute',
-      width: 400,
       backgroundColor: palette.background.paper,
       boxShadow: shadows[5],
+      maxWidth: 400,
+      outline: 'none',
+      margin: `${spacing(4)}px 0 0`,
       padding: spacing(4),
-      outline: 'none'
+      position: 'absolute',
+      width: '100%'
     }
   });
 
@@ -44,7 +50,7 @@ const BaseModal = withStyles(styles)((props: any) => {
 
   return (
     <div>
-      <Modal aria-labelledby="Base Modal" aria-describedby="Base Modal Description" open={props.modalOpen} onClose={props.closeModal}>
+      <Modal className={classes.modal} aria-labelledby="Base Modal" aria-describedby="Base Modal Description" open={props.modalOpen} onClose={props.closeModal}>
         <div className={classes.paper}>{renderModalContent()}</div>
       </Modal>
     </div>
