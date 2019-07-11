@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 import { AppState } from '../../reducers';
 import { closeModal, ModalType } from '../../actions/modalActions';
 
+import ImportModal from './components/Import';
+import ExportModal from './components/Export';
+import AddProjectModal from './components/AddProject';
+
 interface BaseModalProps extends WithStyles {
   modalOpen: boolean;
   modalContent: ModalType;
@@ -35,9 +39,11 @@ const BaseModal = withStyles(styles)((props: BaseModalProps) => {
   function renderModalContent() {
     switch (props.modalContent) {
       case 'import':
-        return <div>Import!</div>;
+        return <ImportModal />;
       case 'export':
-        return <div>Export!</div>;
+        return <ExportModal />;
+      case 'addProject':
+        return <AddProjectModal />;
       default:
         return <div>Unknown Modal Type: {props.modalContent}</div>;
     }

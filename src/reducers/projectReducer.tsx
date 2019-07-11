@@ -1,45 +1,53 @@
 import { AnyAction, Reducer } from 'redux';
+import shortId from 'shortid';
+
 import { ADD_PROJECT, EDIT_PROJECT, REMOVE_PROJECT, ProjectData } from '../actions/projectActions';
 
 export interface ProjectState {
   projectList: ProjectData[];
 }
 
-// export const PROJECTS_REF = 'LBPROJECTS';
-
-// function getStoredProjects(): ProjectData[] {
-//   return JSON.parse(localStorage.getItem(PROJECTS_REF) || '[]');
-// }
-
-// const initialProjectState = { projectList: [...getStoredProjects()] };
 const initialProjectState = { projectList: [] };
 
+// TEMPORARY
+function generateUUID() {
+  // return Math.floor(100000 + Math.random() * 900000).toString();
+  return shortId.generate()
+}
+// TEMPORARY
+
 const projectReducer: Reducer<ProjectState, AnyAction> = (state: ProjectState = initialProjectState, action: AnyAction) => {
-  let newList = [...state.projectList];
+  const projectList = [...state.projectList];
 
   switch (action.type) {
     case ADD_PROJECT:
-      newList.push(action.payload);
+      const newProject = {
+        id: generateUUID(),
+        learningItems: [],
+        ...action.payload
+      }
+
+      projectList.push(newProject);
 
       return {
         ...state,
-        projectList: newList
+        projectList: projectList
       };
 
     case EDIT_PROJECT:
-      const indexToEdit = newList.findIndex(p => p.id === action.payload.id);
+      const indexToEdit = projectList.findIndex(p => p.id === action.payload.id);
 
-      newList[indexToEdit] = action.payload;
+      projectList[indexToEdit] = action.payload;
 
       return {
         ...state,
-        projectList: newList
+        projectList: projectList
       };
 
     case REMOVE_PROJECT:
       return {
         ...state,
-        projectList: newList.filter(p => p.id !== action.payload)
+        projectList: projectList.filter(p => p.id !== action.payload)
       };
 
     default:

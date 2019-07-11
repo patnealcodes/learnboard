@@ -1,20 +1,21 @@
 import { AnyAction } from 'redux';
+import { LearningItemData } from './learningItemAction';
 
-export type ProjectType = 'link' | 'video' | 'text';
-
-export interface ProjectData {
-  id: string;
-  name: string;
+export interface UserDefinedProjectData {
+  title: string;
   description: string;
-  type: ProjectType;
-  data: string;
+}
+
+export interface ProjectData extends UserDefinedProjectData {
+  id: string
+  learningItems: LearningItemData[]
 }
 
 export const ADD_PROJECT = 'ADD_PROJECT';
 export const EDIT_PROJECT = 'EDIT_PROJECT';
 export const REMOVE_PROJECT = 'REMOVE_PROJECT';
 
-export function addProject(projectData: ProjectData): AnyAction {
+export function addProject(projectData: UserDefinedProjectData): AnyAction {
   return {
     type: ADD_PROJECT,
     payload: projectData
