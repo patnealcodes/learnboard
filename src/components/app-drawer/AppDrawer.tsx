@@ -23,11 +23,11 @@ const useStyles = makeStyles({
   }
 });
 
-const AppDrawer = (props: AppDrawerProps) => {
+const AppDrawer = ({ closeDrawer, openDrawer, drawerOpen }: AppDrawerProps) => {
   const classes = useStyles();
 
   const renderMenuItems = () => (
-    <div className={classes.list} role="presentation" onClick={props.closeDrawer} onKeyDown={props.closeDrawer}>
+    <div className={classes.list} role="presentation" onClick={closeDrawer} onKeyDown={closeDrawer}>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
@@ -40,7 +40,7 @@ const AppDrawer = (props: AppDrawerProps) => {
   );
 
   return (
-    <SwipeableDrawer open={props.drawerOpen} onClose={props.closeDrawer} onOpen={props.openDrawer}>
+    <SwipeableDrawer open={drawerOpen} onClose={closeDrawer} onOpen={openDrawer}>
       {renderMenuItems()}
     </SwipeableDrawer>
   );

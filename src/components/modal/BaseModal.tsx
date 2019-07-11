@@ -40,11 +40,9 @@ const styles = ({ palette, shadows, spacing }: Theme) =>
     }
   });
 
-const BaseModal = withStyles(styles)((props: BaseModalProps) => {
-  const { classes } = props;
-
+const BaseModal = withStyles(styles)(({ classes, modalContent, closeModal, modalOpen }: BaseModalProps) => {
   function renderModalContent() {
-    switch (props.modalContent) {
+    switch (modalContent) {
       case 'import':
         return <ImportModal />;
       case 'export':
@@ -52,15 +50,15 @@ const BaseModal = withStyles(styles)((props: BaseModalProps) => {
       case 'addProject':
         return <AddProjectModal />;
       default:
-        return <div>Unknown Modal Type: {props.modalContent}</div>;
+        return <div>Unknown Modal Type: {modalContent}</div>;
     }
   }
 
   return (
     <div>
-      <Modal className={classes.modal} aria-labelledby="Base Modal" aria-describedby="Base Modal Description" open={props.modalOpen} onClose={props.closeModal}>
+      <Modal className={classes.modal} aria-labelledby="Base Modal" aria-describedby="Base Modal Description" open={modalOpen} onClose={closeModal}>
         <div className={classes.paper}>
-          <Close className={classes.closeBtn} onClick={props.closeModal} />
+          <Close className={classes.closeBtn} onClick={closeModal} />
           {renderModalContent()}
         </div>
       </Modal>

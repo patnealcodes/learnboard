@@ -29,11 +29,11 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const AppToolbar = (props: AppToolbarProps) => {
+const AppToolbar = ({ drawerOpen, closeDrawer, openDrawer, openModal }: AppToolbarProps) => {
   const classes = useStyles();
 
   function toggleDrawer() {
-    props.drawerOpen ? props.closeDrawer() : props.openDrawer();
+    drawerOpen ? closeDrawer() : openDrawer();
   }
 
   return (
@@ -46,7 +46,7 @@ const AppToolbar = (props: AppToolbarProps) => {
           <Typography variant="h6" className={classes.title}>
             LearnBoard
           </Typography>
-          <Button color="inherit" onClick={() => props.openModal('import')}>
+          <Button color="inherit" onClick={() => openModal('import')}>
             Import
           </Button>
         </Toolbar>
