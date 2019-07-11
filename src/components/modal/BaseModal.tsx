@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, WithStyles, createStyles, withStyles, Theme } from '@material-ui/core';
+import { Close } from '@material-ui/icons';
 import { connect } from 'react-redux';
 
 import { AppState } from '../../reducers';
@@ -24,12 +25,18 @@ const styles = ({ palette, shadows, spacing }: Theme) =>
     paper: {
       backgroundColor: palette.background.paper,
       boxShadow: shadows[5],
+      margin: `${spacing(4)}px 0 0`,
       maxWidth: 400,
       outline: 'none',
-      margin: `${spacing(4)}px 0 0`,
       padding: spacing(4),
       position: 'absolute',
       width: '100%'
+    },
+    closeBtn: {
+      cursor: 'pointer',
+      position: 'absolute',
+      right: spacing(1),
+      top: spacing(1)
     }
   });
 
@@ -52,7 +59,10 @@ const BaseModal = withStyles(styles)((props: BaseModalProps) => {
   return (
     <div>
       <Modal className={classes.modal} aria-labelledby="Base Modal" aria-describedby="Base Modal Description" open={props.modalOpen} onClose={props.closeModal}>
-        <div className={classes.paper}>{renderModalContent()}</div>
+        <div className={classes.paper}>
+          <Close className={classes.closeBtn} onClick={props.closeModal} />
+          {renderModalContent()}
+        </div>
       </Modal>
     </div>
   );
